@@ -10,7 +10,6 @@ function run() {
             'country=us&' +
             'apiKey=' + process.env.newsApiKey)
     .then(function (response) {
-        // console.log();
         for (let i = 0; i < response.data.articles.length; i++) {
             const element = response.data.articles[i];
             try {
@@ -27,5 +26,3 @@ function run() {
 };
 
 exports.run = run;
-
-// run();

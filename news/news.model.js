@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     source: {
         id: { type: String },
-        name: { type: String, required: true }
+        name: { type: String }
     },
     author: { type: String },
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    url: { type: String, required: true },
-    urlToImage: { type: String, required: true },
-    publishedAt: { type: String, required: true },
+    title: { type: String },
+    description: { type: String },
+    url: { type: String },
+    urlToImage: { type: String },
+    publishedAt: { type: String },
     content: { type: String },
     createdDate: { type: Date, default: Date.now }
 });

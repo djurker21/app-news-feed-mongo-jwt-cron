@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 
+const cron = require('node-cron');
+const getFeed = require('./cron/get-feed');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -19,6 +22,12 @@ app.use('/feed', require('./news/news.controller'));
 
 // global error handler
 app.use(errorHandler);
+
+// Schedule tasks to be run on the server.
+cron.schedule('59 13 * * *', function() {
+    console.log('running a task every day on 13:59 ~ 2pm >>> ' + new Date());
+    getFeed.run();
+});
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;

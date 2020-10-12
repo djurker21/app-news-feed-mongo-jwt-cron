@@ -6,5 +6,6 @@ mongoose.Promise = global.Promise;
 
 module.exports = {
     User: require('../users/user.model'),
-    News: require('../news/news.model')
+    News: require('../news/news.model'),
+    Favorite: require('../favorites/favorite.model')
 };
